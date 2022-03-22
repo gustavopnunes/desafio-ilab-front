@@ -1,7 +1,15 @@
+import { useState } from "react";
+import Login from "./pages/Login";
+import Orders from "./pages/Orders";
+
 function App() {
+
+  const [isLoggedIn] = useState(false)
+
   return (
+
     <div className="App">
-     <h1>Code and Tears</h1>
+    {isLoggedIn? <Orders /> : <Login />}
     </div>
   );
 }
