@@ -23,10 +23,10 @@ body {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 button:hover {
   filter: brightness(120%);
-  transition: 0.2s ease;
-  border: none;
+  transition: 0.2s ease infinite;
 }
