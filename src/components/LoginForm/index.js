@@ -1,17 +1,17 @@
-import React from 'react';
-import { Container } from './styles';
+import React from "react";
+import { Container } from "./styles";
 
 function LoginForm() {
   return (
     <Container>
       <header>
-        <h1>ENTRAR COM E-EMAIL</h1>
+        <h1>ENTRAR COM E-EMAIL OU TELEFONE</h1>
       </header>
-      <label>Informe o seu e-email para continuar</label>
-        <input placeholder='Informe o seu e-mail' />
-        <button>Continuar</button>
+      <input type="email" placeholder="Informe seu e-mail ou telefone" />
+      <input type="password" placeholder="Informe sua senha" />
+      <button>Continuar</button>
     </Container>
-  )
+  );
 }
 
 export default LoginForm;

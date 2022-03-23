@@ -17,6 +17,10 @@ export const Container = styled.div`
       color: black;
   }
 
+  label {
+    font-size: 1.56rem;
+  }
+
   input {
     border-radius: 5px;
     outline: none;
