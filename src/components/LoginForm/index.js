@@ -7,7 +7,7 @@ function LoginForm() {
       <header>
         <h1>ENTRAR COM E-EMAIL OU TELEFONE</h1>
       </header>
-      <input type="email" placeholder="Informe o seu e-mail ou telefone" />
+      <input type="email" placeholder="Informe seu e-mail ou telefone" />
       <input type="password" placeholder="Informe sua senha" />
       <button>Continuar</button>
     </Container>
