@@ -1,13 +1,13 @@
 import React from "react";
 import OrdersList from "../../components/OrdersList";
 
-import { Container } from "./styles";
+import "./styles.css";
 
 function Orders() {
   return (
-    <Container>
+    <>
       <OrdersList />
-    </Container>
+    </>
   );
 }
 
