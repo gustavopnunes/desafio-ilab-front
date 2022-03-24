@@ -1,8 +1,6 @@
 import { Container } from "./styles";
 import { orders } from "../../mock/orders";
 
-console.log(orders);
-
 function OrdersList() {
   return (
     <Container>
