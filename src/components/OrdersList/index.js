@@ -1,17 +1,27 @@
-import { Container } from "./styles";
+import './style.css';
 import { orders } from "../../mock/orders";
+import OrderItem from "../OrderItem";
 
-console.log(orders);
+console.log("pedidos: ", orders);
 
 function OrdersList() {
   return (
-    <Container>
+    <div className='ordersList__container'>
+      <div className='orderList__top'>
+        <h1 className='orderList__h1'>
+          Pedidos abertos
+        </h1>
+      </div>
       <ul>
         {orders.map((order) => (
-          <li key={order.id}>{order.id}</li>
+          <li className='ordersList__li' key={order.id}>
+            <OrderItem>
+              {order.id}
+            </OrderItem>
+          </li>
         ))}
       </ul>
-    </Container>
+    </div>
   );
 }
 
