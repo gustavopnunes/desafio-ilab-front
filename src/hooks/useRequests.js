@@ -1,8 +1,8 @@
 function useRequests() {
-  async function get(route) {
+  async function get(route, status, items) {
     try {
       const response = await fetch(
-        `https://desafio-ilab-back.herokuapp.com/${route}`,
+        `https://desafio-ilab-back.herokuapp.com/${route}?status=${status}&${items}`,
         {
           method: 'GET',
         }
@@ -43,7 +43,7 @@ function useRequests() {
   async function post(route, body, withToken) {
     const config = withToken
       ? {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${withToken}`,
         }
       : {};
     try {
@@ -71,7 +71,7 @@ function useRequests() {
     }
   }
 
-  async function put(route, body, id) {
+  async function put(route, body, id, withToken) {
     try {
       const response = await fetch(
         `https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
@@ -80,7 +80,7 @@ function useRequests() {
           body: JSON.stringify(body),
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${withToken}`,
           },
         }
       );
