@@ -1,0 +1,32 @@
+.ordersList__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex-grow: 1;
+    align-items: stretch;
+    font-family: "helvetica";
+    color: gray;
+    background-color: rgb(252, 252, 252);
+    width: 90vw;
+    max-width: 450px;
+    height: 640px;
+    border-radius: 10px;
+    border: 0.5px black;
+}
+
+.orderList__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.ordersList__li {
+    all: unset;
+}
+
