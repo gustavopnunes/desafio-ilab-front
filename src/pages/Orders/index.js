@@ -1,11 +1,14 @@
 import React from 'react';
 import OrdersList from '../../components/OrdersList';
-import useRequests from '../../hooks/useRequests';
+
+import './styles.css';
 
 function Orders() {
-  const requests = useRequests();
-
-  return <OrdersList />;
+  return (
+    <>
+      <OrdersList />
+    </>
+  );
 }
 
 export default Orders;

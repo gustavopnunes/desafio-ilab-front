@@ -2,9 +2,13 @@ function useRequests() {
   async function get(route, status, items) {
     try {
       const response = await fetch(
-        `https://desafio-ilab-back.herokuapp.com/${route}?status=${status}&${items}`,
+        `https://desafio-ilab-back.herokuapp.com/${route}?status=${status}&items=${items}`,
         {
           method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJEZWxpdmVyeUFwcCJ9.5vm6OAB8VZUWxTE6o3Dwi0Njmyi6kfMIGWpVJjLsZmo`,
+          },
         }
       );
 
