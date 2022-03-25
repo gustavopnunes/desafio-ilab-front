@@ -1,0 +1,40 @@
+* {
+    background-color: rgb(252, 252, 252);
+}
+
+.ordersList__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex-grow: 1;
+    align-items: stretch;
+    font-family: "helvetica";
+    color: rgb(128, 128, 128);
+    background-color: rgb(252, 252, 252);
+    width: 90vw;
+    max-width: 450px;
+    height: 640px;
+    border-radius: 10px;
+    border: 0.5px rgb(0, 0, 0);
+}
+
+.orderList__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: rgb(255, 0, 0);
+    text-align: center;
+    color: rgb(255, 255, 255);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.orderList__h1 {
+    background-color: rgb(255, 0, 0);
+}
+
+.ordersList__li {
+    all: unset;
+}
+
