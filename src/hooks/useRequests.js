@@ -70,7 +70,6 @@ function useRequests() {
       if (!response.ok) {
         throw new Error(data);
       }
-
       return data;
     } catch (error) {
       console.log(error.message);

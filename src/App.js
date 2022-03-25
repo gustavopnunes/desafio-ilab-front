@@ -3,22 +3,20 @@ import Login from "./pages/Login";
 import Orders from "./pages/Orders";
 import StartTracking from "./pages/StartTracking";
 import FinishTracking from "./pages/FinishTracking";
+import Routes from "./routes";
+import { useAuth } from "./providers/AuthContext";
+import { Navigate } from "react-router-dom";
 
 function App() {
+  
+  const { isAuthenticated } = useAuth();
 
-  // estado para usar com auth-context
-  // const [isLogged, setIsLogged] = useState(false)
 
-  /* estado feito apenas para visualizar / testar pagina
-    - possiveis paginas: login, order, startTracking, finishTracking
-  */
-  const [whatPage] = useState("login") 
 
   return (
+    
+    isAuthenticated? <Orders /> : <Login />
 
-    <div className="App">
-    {whatPage === "login"? <Login /> : whatPage === "orders"? <Orders /> : whatPage === "startTracking"? <StartTracking /> : <FinishTracking />} 
-    </div>
   );
 }
 

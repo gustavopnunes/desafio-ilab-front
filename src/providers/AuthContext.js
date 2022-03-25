@@ -1,25 +1,22 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { Navigate, useNavigate } from "react-router-dom";
 import useRequests from "../hooks/useRequests";
+import Orders from "../pages/Orders";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState("");
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const useRequest = useRequests();
 
   useEffect(() => {
-     if (localStorage.getItem("@iLab/token")) {
-         setIsAuthenticated(true)
-     }
+    if (localStorage.getItem("@iLab/token")) {
+      setIsAuthenticated(true);
+    }
     //eslint-disable-next-line
   }, []);
-
-  if (token){
-      console.log("logado")
-  } else {
-      console.log("deslogado")
-  }
 
   const validateLogin = (loginData) => {
     const formatedLoginData = {
@@ -28,19 +25,33 @@ export const AuthProvider = ({ children }) => {
       password: loginData.password,
     };
 
+    const failToast = () => toast.error("Login inválido! Tente novamente");
+
     useRequest.post("login", formatedLoginData).then((result) => {
-      if (result.token) {
+
+      if (!result) {
+        failToast();
+      }
+      
+      else {
         const formatedToken = result.token.replace("Bearer ", "");
         localStorage.setItem("@iLab/token", formatedToken);
         setToken(formatedToken);
-      } else {
-        console.log("login invalido!");
+        window.location.replace("/orders");
       }
     });
   };
 
+  const logout = () => {
+    localStorage.removeItem("@iLab/token");
+    setIsAuthenticated(false);
+    window.location.replace("/login");
+  };
+
   return (
-    <AuthContext.Provider value={{token, validateLogin, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ token, validateLogin, isAuthenticated, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
