@@ -1,8 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Navigate, useNavigate } from "react-router-dom";
 import useRequests from "../hooks/useRequests";
-import Orders from "../pages/Orders";
 
 export const AuthContext = createContext();
 

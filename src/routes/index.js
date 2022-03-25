@@ -1,16 +1,34 @@
-import { BrowserRouter, Routes as Switch, Route } from "react-router-dom"
-import Login from "../pages/Login"
-import Orders from "../pages/Orders"
+import {
+  Routes as Switch,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import FinishTracking from "../pages/FinishTracking";
+import Login from "../pages/Login";
+import Orders from "../pages/Orders";
+import StartTracking from "../pages/StartTracking";
+import { useAuth } from "../providers/AuthContext";
 
 const Routes = () => {
-    return (
-        <BrowserRouter>
-        <Switch>
-            <Route path="/" element={<Login />} />
-            <Route path="/orders" element={<Orders />} />
-        </Switch>
-        </BrowserRouter>
-    )
-}
+  const { isAuthenticated } = useAuth();
 
-export default Routes
+  return (
+    <>
+      {!isAuthenticated ? (
+        <Switch>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Login />} />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/start-tracking" element={<StartTracking />} />
+          <Route path="/finish-tracking" element={<FinishTracking />} />
+          <Route path="*" element={<Navigate to="/orders" replace />} />
+        </Switch>
+      )}
+    </>
+  );
+};
+
+export default Routes;
