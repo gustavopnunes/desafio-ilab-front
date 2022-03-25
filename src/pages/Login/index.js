@@ -1,11 +1,24 @@
 import LoginForm from "../../components/LoginForm";
+import { useAuth } from "../../providers/AuthContext";
+import Orders from "../Orders";
 
 import { Container } from "./styles";
 
 function Login() {
+  
+const {isAuthenticated} = useAuth();
+
+  if (isAuthenticated){
+    window.location.replace("/orders")
+  }
+
   return (
     <Container>
-      <LoginForm />
+      {!isAuthenticated? 
+      <Login />
+    :
+      <Orders />
+}
     </Container>
   );
 }

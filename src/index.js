@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
       <AuthProvider>
         <App />
         <Toaster toastOptions={{
@@ -21,7 +21,7 @@ ReactDOM.render(
           }
         }}/>
       </AuthProvider>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

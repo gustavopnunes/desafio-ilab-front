@@ -8,16 +8,12 @@ import { useAuth } from "./providers/AuthContext";
 import { Navigate } from "react-router-dom";
 
 function App() {
-  
-  const { isAuthenticated } = useAuth();
+
+  const {isAuthenticated} = useAuth();
 
 
 
-  return (
-    
-    isAuthenticated? <Orders /> : <Login />
-
-  );
+  return <Routes />
 }
 
 export default App;

@@ -11,7 +11,7 @@ function OrdersList() {
       paginazinha das ordenzinhas e pa
       <ul>
         {orders.map((order) => (
-          <li key={order.id}>{order.id}</li>
+          <li key={order.id}>{order.id}<button>mim dexa entrega esse!!!</button></li>
         ))}
 
         <button onClick={() => logout()}>Sair</button>
