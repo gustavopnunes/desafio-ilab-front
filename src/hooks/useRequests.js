@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthContext";
+
 function useRequests() {
+
+  const {token} = useContext(AuthContext) || "";
+
   async function get(route) {
     try {
       const response = await fetch(
@@ -64,7 +70,6 @@ function useRequests() {
       if (!response.ok) {
         throw new Error(data);
       }
-
       return data;
     } catch (error) {
       console.log(error.message);
