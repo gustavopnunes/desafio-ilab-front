@@ -12,12 +12,12 @@ function App() {
   /* estado feito apenas para visualizar / testar pagina
     - possiveis paginas: login, order, startTracking, finishTracking
   */
-  const [whatPage] = useState("login") 
+  const [whatPage] = useState("login")
 
   return (
 
     <div className="App">
-    {whatPage === "login"? <Login /> : whatPage === "orders"? <Orders /> : whatPage === "startTracking"? <StartTracking /> : <FinishTracking />} 
+      {whatPage === "login" ? <Login /> : whatPage === "orders" ? <Orders /> : whatPage === "startTracking" ? <StartTracking /> : <FinishTracking />}
     </div>
   );
 }

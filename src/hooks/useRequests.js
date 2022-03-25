@@ -3,7 +3,7 @@ import { AuthContext } from "../providers/AuthContext";
 
 function useRequests() {
 
-  const {token} = useContext(AuthContext) || "";
+  const { token } = useContext(AuthContext) || "";
 
   async function get(route) {
     try {
@@ -49,8 +49,8 @@ function useRequests() {
   async function post(route, body, withToken) {
     const config = withToken
       ? {
-          Authorization: `Bearer ${token}`,
-        }
+        Authorization: `Bearer ${token}`,
+      }
       : {};
     try {
       const response = await fetch(
