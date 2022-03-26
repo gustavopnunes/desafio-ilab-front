@@ -4,6 +4,7 @@ import Orders from "./pages/Orders";
 import StartTracking from "./pages/StartTracking";
 import FinishTracking from "./pages/FinishTracking";
 import Routes from "./routes";
+import TrackingProvider from "./contexts/TrackingContext";
 
 function App() {
   return <Routes />
@@ -17,10 +18,11 @@ function App() {
   const [whatPage] = useState("login")
 
   return (
-
-    <div className="App">
-      {whatPage === "login" ? <Login /> : whatPage === "orders" ? <Orders /> : whatPage === "startTracking" ? <StartTracking /> : <FinishTracking />}
-    </div>
+    <TrackingProvider>
+      <div className="App">
+        {whatPage === "login" ? <Login /> : whatPage === "orders" ? <Orders /> : whatPage === "startTracking" ? <StartTracking /> : <FinishTracking />}
+      </div>
+    </TrackingProvider>
   );
 }
 
