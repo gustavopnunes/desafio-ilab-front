@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from 'react-router-dom';
 
 import { Button } from "./styles";
 import useRequests from "../../hooks/useRequests";
@@ -68,15 +69,16 @@ function StartTrackingButton() {
   }
 
   return (
-    <Button
-      onClick={() => {
-        createTrackingStatus();
-        getLocationUpdate();
-      }}
-    >
-      Iniciar Tracking
-    </Button>
-
+    <NavLink name="start-tracking" to="/finish-tracking">
+      <Button
+        onClick={() => {
+          createTrackingStatus();
+          getLocationUpdate();
+        }}
+      >
+        Iniciar Tracking
+      </Button>
+    </NavLink>
   );
 }
 
