@@ -1,14 +1,21 @@
 import React from 'react';
+import Header from '../../components/Header';
+import StartTrackingButton from '../../components/StartTrackingButton';
 import StopTrackingButton from "../../components/StopTrackingButton";
-
-import { Container } from './styles';
 
 function FinishTracking() {
   return (
-    <Container>
-      <StopTrackingButton buttonText={"Concluir"} newStatus={"DELIVERED"} />
-      <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />
-    </Container>
+
+    <div className="start-container">
+      <Header />
+      <div className="page-container">
+        {/* <div> */}
+          <StopTrackingButton buttonText={"Concluir"} newStatus={"DELIVERED"} />
+          <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />
+        {/* </div> */}
+      </div>
+    </div>
+
   );
 }
 

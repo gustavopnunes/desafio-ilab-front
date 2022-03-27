@@ -17,9 +17,9 @@ function App() {
   const [whatPage] = useState("login")
 
   return (
-      <div className="App">
-        {whatPage === "login" ? <Login /> : whatPage === "orders" ? <Orders /> : whatPage === "startTracking" ? <StartTracking /> : <FinishTracking />}
-      </div>
+    <div className="App">
+      {whatPage === "login" ? <Login /> : whatPage === "orders" ? <Orders /> : whatPage === "startTracking" ? <StartTracking /> : <FinishTracking />}
+    </div>
   );
 }
 
