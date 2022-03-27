@@ -79,7 +79,7 @@ function useRequests() {
   async function put(route, body, id) {
     try {
       const response = await fetch(
-        `https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
+        `https://thawing-brushlands-07564.herokuapp.com/https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
         {
           method: 'PUT',
           body: JSON.stringify(body),
