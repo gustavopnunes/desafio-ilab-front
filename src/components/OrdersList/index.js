@@ -9,7 +9,7 @@ import iconPrev from './assets/icon-prev.png';
 function OrdersList() {
   const [orders, setOrders] = useState([]);
   const requests = useRequests();
-  const [itensPerPage, setItensPerPage] = useState(10);
+  const [itensPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
 
   const pages = Math.ceil(orders.length / itensPerPage);
