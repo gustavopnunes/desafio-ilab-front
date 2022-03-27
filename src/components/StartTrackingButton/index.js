@@ -6,15 +6,16 @@ import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
 
 function StartTrackingButton() {
-  let { trackingID, watchID } = useTracking();
+  const { setTrackingID, setWatchID } = useTracking();
   const { setPermission } = useTracking();
-  const { put, post } = useRequests();
+  const { post } = useRequests();
+  let trackID = "";
 
   const token = localStorage.getItem("@iLab/token");
 
   const body1 = {
-    order: { "id": 5 },
-    dpId: { "id": 2 },
+    order: { "id": 24 },
+    dpId: { "id": 3 },
     status: "DELIVERED"
   }
 
@@ -22,8 +23,9 @@ function StartTrackingButton() {
     console.log(token);
     const response = await post("tracking-status", body1, token).then(res => {
       if (res)
-      console.log("TS: ", String(res.id));
-      trackingID = String(res.id);
+      trackID = String(res.id);
+      setTrackingID(res.id);
+      console.log("post TS: ", res);
     });
   }
 
@@ -37,30 +39,35 @@ function StartTrackingButton() {
   function getLocationUpdate() {
 
     if ("geolocation" in navigator) {
+
       setPermission(true);
+      
       navigator.geolocation.getCurrentPosition((position) => {
         let body = {
           "thDate": position.timestamp,
           "thLatitude": position.coords.latitude,
           "thLongitude": position.coords.longitude,
           "tsId": {
-            "id": trackingID
+            "id": trackID
           }
         }
         createTrackingRecord(body);
       });
 
-      watchID = navigator.geolocation.watchPosition((position) => {
+      const wID = navigator.geolocation.watchPosition((position) => {
         let body = {
           "thDate": position.timestamp, 
           "thLatitude": position.coords.latitude, 
           "thLongitude": position.coords.longitude, 
           "tsId": {
-            "id": trackingID
+            "id": trackID
           }
         }
         createTrackingRecord(body);
       });
+
+      setWatchID(wID);
+
     } else {
       setPermission(false);
       console.log("Not Available");
