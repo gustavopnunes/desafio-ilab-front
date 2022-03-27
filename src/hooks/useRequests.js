@@ -1,4 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthContext";
+
 function useRequests() {
+
+  const { token } = useContext(AuthContext) || "";
+
   async function get(route) {
     try {
       const response = await fetch(
@@ -43,8 +49,8 @@ function useRequests() {
   async function post(route, body, withToken) {
     const config = withToken
       ? {
-          Authorization: `Bearer ${token}`,
-        }
+        Authorization: `Bearer ${token}`,
+      }
       : {};
     try {
       const response = await fetch(
@@ -64,7 +70,6 @@ function useRequests() {
       if (!response.ok) {
         throw new Error(data);
       }
-
       return data;
     } catch (error) {
       console.log(error.message);
@@ -74,7 +79,7 @@ function useRequests() {
   async function put(route, body, id) {
     try {
       const response = await fetch(
-        `https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
+        `https://thawing-brushlands-07564.herokuapp.com/https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
         {
           method: 'PUT',
           body: JSON.stringify(body),

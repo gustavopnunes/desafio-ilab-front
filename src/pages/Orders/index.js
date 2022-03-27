@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import OrdersList from "../../components/OrdersList";
 
 import { Container } from "./styles";
 
 function Orders() {
+
   return (
     <Container>
       <OrdersList />
