@@ -1,7 +1,6 @@
 .ordersList__container {
   display: flex;
   flex-direction: column;
-  justify-content: start;
   flex-grow: 1;
   align-items: stretch;
   font-family: 'helvetica';
