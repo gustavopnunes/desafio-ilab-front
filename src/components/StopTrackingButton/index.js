@@ -5,19 +5,19 @@ import { Button } from "./styles";
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
 
-function StopTrackingButton({newStatus, buttonText}) {
-  let { trackingID, watchID } = useTracking();
+function StopTrackingButton(props) {
+  const { watchID, trackingID } = useTracking();
+  const { permission } = useTracking();
   const { put } = useRequests();
 
   const token = localStorage.getItem("@iLab/token");
 
   async function updateTrackingStatus() {
     const body = {
-        "id": trackingID,
-        "status": newStatus
+        "status": props.newStatus
     }
 
-    const response = await put("tracking-status", body, token).then(res => {
+    const response = await put(`tracking-status/${trackingID}`, body, token).then(res => {
       if (res)
       console.log("res: ", res);
     });
@@ -31,13 +31,16 @@ function StopTrackingButton({newStatus, buttonText}) {
     <NavLink name="/finish-tracking" to="/orders">
         <Button
             onClick={() => {
+                console.log("wID: ", watchID);
+                console.log("tID: ", String(trackingID));
+                console.log("perm: ", permission);
                 stopWatch();
                 updateTrackingStatus();
             }}
         >
-            {buttonText}
+            {props.buttonText}
         </Button>
-        
+
     </NavLink>
   );
 }
