@@ -1,13 +1,12 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 import useTrackingProvider from "../hooks/useTrackingProvider";
 
 export const TrackingContext = createContext({});
 
-function TrackingProvider({children}) {
-    const trackingProvider = useTrackingProvider;
+export const TrackingProvider = ({ children }) => {
+    const trackingProvider = useTrackingProvider();
 
-    return(
-        <TrackingContext.Provider value={trackingProvider}>{children}</TrackingContext.Provider>
-    )
+    return (
+    <TrackingContext.Provider value={trackingProvider}>{children}</TrackingContext.Provider>
+  );
 }
-export default TrackingProvider;
