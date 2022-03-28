@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import "./styles.css";
 import useRequests from "../../hooks/useRequests";
@@ -11,12 +11,14 @@ function StartTrackingButton() {
   const { post } = useRequests();
   let trackID = "";
 
+
+const location = useLocation()
   const token = localStorage.getItem("@iLab/token");
 
   async function createTrackingStatus() {
     const body1 = {
-      order: { "id": 36 },
-      dpId: { "id": 3 },
+      order: { "id": 2020202 },
+      dpId: { "id": 123123 },
       status: "DELIVERED"
     };
 
@@ -77,6 +79,7 @@ function StartTrackingButton() {
 
   return (
     <NavLink name="start-tracking" to="/finish-tracking">
+      {console.log(location)}
       <button
         className="startBtn"
         onClick={() => {

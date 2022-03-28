@@ -23,6 +23,7 @@ body {
 button {
   cursor: pointer;
   border: none;
+  margin: 0.5rem;
 }
 
 .start-container {
