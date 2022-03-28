@@ -32,15 +32,9 @@
 .ordersList__li {
   all: unset;
 }
-.pagination_buttons button img {
-  width: 35px;
-  height: 35px;
-}
-.pagination_buttons {
-  position: relative;
-}
 
-.pagination_buttons .btn_next {
-  position: absolute;
-  right: 150px;
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 }

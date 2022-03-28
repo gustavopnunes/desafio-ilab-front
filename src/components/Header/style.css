@@ -6,6 +6,7 @@
     width: 100%;
     height: 100px;
     padding: 20px;
+    padding-top: 40px;
 }
 
 .logout_img{
@@ -15,4 +16,11 @@
 
 .helmet_img {
     width: 60px;
+}
+
+.header_span {
+    font-family: "helvetica";
+    color: white;
+    font-size: 3.3em;
+    font-weight: bold;
 }

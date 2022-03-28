@@ -9,10 +9,8 @@ function FinishTracking() {
     <div className="start-container">
       <Header />
       <div className="page-container">
-        {/* <div> */}
           <StopTrackingButton buttonText={"Concluir"} newStatus={"DELIVERED"} />
           <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />
-        {/* </div> */}
       </div>
     </div>
 
