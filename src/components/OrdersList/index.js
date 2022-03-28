@@ -23,7 +23,7 @@ function OrdersList() {
   useEffect(() => {
     const fetchData = async () => {
       const ordersList = await requests.get("orders", "aberto", "100");
-      setOrders(ordersList);
+      setOrders(ordersList.sort((a, b) => a.id - b.id));
     };
     fetchData();
     //eslint-disable-next-line
@@ -55,7 +55,7 @@ function OrdersList() {
                 address={order.clientId.clientAddress}
                 >
                 {order.id}
-                {console.log(order)}
+                {/* {console.log(order)} */}
               </OrderItem>
             </li>
   
