@@ -23,6 +23,7 @@ body {
 button {
   cursor: pointer;
   border: none;
+  margin: 0.5rem;
 }
 
 .start-container {
@@ -34,7 +35,7 @@ button {
   min-height: 100vh;
 
   background-image: url("./components/Header/assets/background1.svg");
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-position: center;
   background-size: 500px;
 }
@@ -45,7 +46,6 @@ button {
   justify-content: flex-end;
   flex-direction: column;
   flex-grow: 1;
-  padding-bottom: 80px;
-  margin: 20px;
-
+  /* padding-bottom: 80px; */
+  margin-bottom: 1rem;
 }

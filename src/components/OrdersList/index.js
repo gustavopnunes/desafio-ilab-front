@@ -1,12 +1,15 @@
-import './style.css';
-import OrderItem from '../OrderItem';
-import Header from '../Header';
-import { useEffect, useState } from 'react';
-import useRequests from '../../hooks/useRequests';
-import iconNext from './assets/icon-next.png';
-import iconPrev from './assets/icon-prev.png';
+import "./style.css";
+import OrderItem from "../OrderItem";
+import Header from "../Header";
+import { useEffect, useState } from "react";
+import useRequests from "../../hooks/useRequests";
+import iconNext from "./assets/icon-next.png";
+import iconPrev from "./assets/icon-prev.png";
+import {useNavigate } from "react-router-dom";
+import useTracking from "../../hooks/useTracking";
 
 function OrdersList() {
+  const { setOrderID } = useTracking();
   const [orders, setOrders] = useState([]);
   const requests = useRequests();
   const [itensPerPage] = useState(10);
@@ -16,10 +19,12 @@ function OrdersList() {
   const starIndex = currentPage * itensPerPage;
   const endIndex = starIndex + itensPerPage;
   const currentOrders = orders.slice(starIndex, endIndex);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchData = async () => {
-      const ordersList = await requests.get('orders', 'aberto', '100');
+      const ordersList = await requests.get("orders", "aberto", "100");
       setOrders(ordersList);
     };
     fetchData();
@@ -40,29 +45,36 @@ function OrdersList() {
   };
 
   return (
-    <div className='orders-container'>
-      <div className='ordersList__container'>
-        <ul>
-          {currentOrders.map((order) => (
-            <li className='ordersList__li' key={order.id}>
+    <div className="ordersList__container">
+      <ul>
+        {currentOrders.map((order) => (
+          
+             
+            <li className="ordersList__li" key={order.id} onClick={() => {
+              navigate('/start-tracking',{state:{id: order.id}});
+              setOrderID(order.id);
+              } }>
               <OrderItem
                 clientName={order.clientId.clientName}
-                address={order.clientId.clientAddress}>
+                address={order.clientId.clientAddress}
+                >
                 {order.id}
+                {console.log(order)}
               </OrderItem>
             </li>
-          ))}
-        </ul>
-      </div>
-      <div className='pagination_buttons'>
-        <button onClick={goBack} className='btn-prev'>
-          <img src={iconPrev} alt='' />
+  
+        ))}
+      </ul>
+
+      <div className="pagination_buttons">
+        <button onClick={goBack} className="btn-prev">
+          <img src={iconPrev} alt="" />
         </button>
         <span>
           {currentPage + 1}-{pages}
         </span>
-        <button onClick={passPage} className='btn_next'>
-          <img src={iconNext} alt='' />
+        <button onClick={passPage} className="btn_next">
+          <img src={iconNext} alt="" />
         </button>
       </div>
     </div>
