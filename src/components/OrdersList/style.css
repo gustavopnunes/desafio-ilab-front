@@ -5,12 +5,13 @@
   align-items: stretch;
   font-family: 'helvetica';
   color: rgb(128, 128, 128);
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   width: 90vw;
   max-width: 450px;
-  height: 640px;
+  height: 530px;
   border-radius: 10px;
   border: 0.5px rgb(0, 0, 0);
+  padding-bottom: 20px;
 }
 
 .orderList__top {
@@ -43,14 +44,14 @@
   color: red;
   width: 50px;
   height: 50px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .arrow-icon-inactive {
   color: gray;
   width: 50px;
   height: 50px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .page-btn {
@@ -64,7 +65,10 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  padding-bottom: 20px;
+  padding: 20px 0px;
+  border-radius: 15px;
+  box-shadow: 0px 0.01px 11px rgba(213, 213, 213, 0.524);
+  background-color: white;
 }
 
 .page-span {

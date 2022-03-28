@@ -1,12 +1,10 @@
-import "./style.css";
-import OrderItem from "../OrderItem";
-import Header from "../Header";
 import { useEffect, useState } from "react";
-import useRequests from "../../hooks/useRequests";
-import { BsArrowRightCircle } from "react-icons/bs";
-import { BsArrowLeftCircle } from "react-icons/bs";
+import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
+import OrderItem from "../OrderItem";
+import "./style.css";
 
 function OrdersList() {
   const requests = useRequests();
@@ -26,7 +24,7 @@ function OrdersList() {
   useEffect(() => {
     const fetchData = async () => {
       const ordersList = await requests.get("orders", "aberto", "100");
-      setOrders(ordersList);
+      setOrders(ordersList.sort((a, b) => a.id - b.id));
     };
     fetchData();
     //eslint-disable-next-line
@@ -46,37 +44,35 @@ function OrdersList() {
   };
 
   return (
-    // <div className="orders-container">
-      <div className="ordersList__container">
-        <ul>
-          {currentOrders.map((order) => (
-            <li className="ordersList__li" key={order.id} onClick={() => {
-              navigate('/start-tracking', { state: { id: order.id } });
-              setOrderID(order.id);
-            }}>
-              <OrderItem
-                clientName={order.clientId.clientName}
-                address={order.clientId.clientAddress}
-              >
-                {order.id}
-                {console.log(order)}
-              </OrderItem>
-            </li>
-          ))}
-        </ul>
-        <div className="pagination_buttons">
-          <button onClick={goBack} className="page-btn">
-            <BsArrowLeftCircle className={currentPage === 0 ? "arrow-icon-inactive" : "arrow-icon-active"} />
-          </button>
-          <span className="page-span">
-            {currentPage + 1} / {pages}
-          </span>
-          <button onClick={passPage} className="page-btn">
-            <BsArrowRightCircle className={currentPage === pages - 1 ? "arrow-icon-inactive" : "arrow-icon-active"} />
-          </button>
-        </div>
+    <div className="ordersList__container">
+      <ul>
+        {currentOrders.map((order) => (
+          <li className="ordersList__li" key={order.id} onClick={() => {
+            navigate('/start-tracking', { state: { id: order.id } });
+            setOrderID(order.id);
+          }}>
+            <OrderItem
+              clientName={order.clientId.clientName}
+              address={order.clientId.clientAddress}
+            >
+              {order.id}
+            </OrderItem>
+          </li>
+        ))}
+
+      </ul>
+      <div className="pagination_buttons">
+        <button onClick={goBack} className="page-btn">
+          <BsArrowLeftCircle className={currentPage === 0 ? "arrow-icon-inactive" : "arrow-icon-active"} />
+        </button>
+        <span className="page-span">
+          {currentPage + 1} / {pages}
+        </span>
+        <button onClick={passPage} className="page-btn">
+          <BsArrowRightCircle className={currentPage === pages - 1 ? "arrow-icon-inactive" : "arrow-icon-active"} />
+        </button>
       </div>
-    // </div>
+    </div>
   );
 }
 

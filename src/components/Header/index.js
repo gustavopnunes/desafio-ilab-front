@@ -10,9 +10,9 @@ function Header({children}) {
 
     return (
         <div className="header__container">
-            <img src={helmet} className="helmet_img"></img>
+            <img src={helmet} className="helmet_img" alt="capacete"></img>
             <span className="header_span">{children}</span>
-            <img src={logoutImg} className="logout_img" onClick={() => logout()}></img>
+            <img src={logoutImg} className="logout_img" alt="botao sair" onClick={() => logout()}></img>
         </div>
     );
 }

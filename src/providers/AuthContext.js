@@ -1,16 +1,20 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useRequests from "../hooks/useRequests";
+import jwtDecode from "jwt-decode";
 
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [dpId, setDpId] = useState()
   const useRequest = useRequests();
   
   useEffect(() => {
     if (localStorage.getItem("@iLab/token")) {
       setIsAuthenticated(true);
+      // console.log(dpId)
+      
     }
     //eslint-disable-next-line
   }, []);
@@ -37,6 +41,8 @@ export const AuthProvider = ({ children }) => {
         const formatedToken = result.token.replace("Bearer ", "");
         localStorage.setItem("@iLab/token", formatedToken);
         setToken(formatedToken);
+        const {userId} = jwtDecode(formatedToken)
+        setDpId(userId)
         window.location.replace("/orders");
       }
     });
@@ -52,7 +58,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, validateLogin, isAuthenticated, logout }}
+      value={{ token, validateLogin, isAuthenticated, logout, dpId }}
     >
       {children}
     </AuthContext.Provider>

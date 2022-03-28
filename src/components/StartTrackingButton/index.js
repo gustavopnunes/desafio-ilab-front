@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useLocation } from 'react-router-dom';
 
 import "./styles.css";
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
+import jwtDecode from "jwt-decode";
 
 function StartTrackingButton() {
   const { setTrackingID, setWatchID } = useTracking();
@@ -14,16 +15,20 @@ function StartTrackingButton() {
 
 const location = useLocation()
   const token = localStorage.getItem("@iLab/token");
+  // console.log(dpId)
 
   async function createTrackingStatus() {
     const body1 = {
-      order: { "id": 37 },
-      dpId: { "id": 3 },
+      order: { "id": location.state.id },
+      dpId: { "id": jwtDecode(token).userId },
       status: "DELIVERED"
     };
 
-    console.log(token);
-    const response = await post("tracking-status", body1, token).then(res => {
+    // console.log(jwtDecode(token).userId)
+    console.log(body1)
+
+    // console.log(token);
+    await post("tracking-status", body1, token).then(res => {
       if (res)
       trackID = String(res.id);
       setTrackingID(res.id);
@@ -32,7 +37,8 @@ const location = useLocation()
   }
 
   async function createTrackingRecord(body) {
-    const response = await post("tracking-history", body, token).then(res => {
+ 
+    await post("tracking-history", body, token).then(res => {
       if (res)
         console.log("post TH: ", res);
     });
@@ -79,7 +85,7 @@ const location = useLocation()
 
   return (
     <NavLink name="start-tracking" to="/finish-tracking">
-      {console.log(location)}
+      {/* {console.log(location.state.id)} */}
       <button
         className="startBtn"
         onClick={() => {
