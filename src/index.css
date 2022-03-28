@@ -46,4 +46,6 @@ button {
   flex-direction: column;
   flex-grow: 1;
   padding-bottom: 80px;
+  margin: 20px;
+
 }
