@@ -4,15 +4,18 @@ import helmet from "./assets/capacete.png";
 import { useAuth } from "../../providers/AuthContext";
 
 
-function Header({children}) {
+function Header({ children }) {
 
     const { logout } = useAuth();
 
     return (
-        <div className="header__container">
+        <div className={children !== "EntregaLover" ? "header__container" : "header__container login_header"}>
             <img src={helmet} className="helmet_img" alt="capacete"></img>
             <span className="header_span">{children}</span>
-            <img src={logoutImg} className="logout_img" alt="botao sair" onClick={() => logout()}></img>
+            {children !== "EntregaLover" && (
+                <img src={logoutImg} className="logout_img" alt="botao sair" onClick={() => logout()}></img>
+
+            )}
         </div>
     );
 }
