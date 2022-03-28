@@ -3,15 +3,16 @@ import OrderItem from "../OrderItem";
 import Header from "../Header";
 import { useEffect, useState } from "react";
 import useRequests from "../../hooks/useRequests";
-import iconNext from "./assets/icon-next.png";
-import iconPrev from "./assets/icon-prev.png";
-import {useNavigate } from "react-router-dom";
+import { BsArrowRightCircle } from "react-icons/bs";
+import { BsArrowLeftCircle } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import useTracking from "../../hooks/useTracking";
 
 function OrdersList() {
-  const { setOrderID } = useTracking();
-  const [orders, setOrders] = useState([]);
   const requests = useRequests();
+  const { setOrderID } = useTracking();
+
+  const [orders, setOrders] = useState([]);
   const [itensPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -45,39 +46,37 @@ function OrdersList() {
   };
 
   return (
-    <div className="ordersList__container">
-      <ul>
-        {currentOrders.map((order) => (
-          
-             
+    // <div className="orders-container">
+      <div className="ordersList__container">
+        <ul>
+          {currentOrders.map((order) => (
             <li className="ordersList__li" key={order.id} onClick={() => {
-              navigate('/start-tracking',{state:{id: order.id}});
+              navigate('/start-tracking', { state: { id: order.id } });
               setOrderID(order.id);
-              } }>
+            }}>
               <OrderItem
                 clientName={order.clientId.clientName}
                 address={order.clientId.clientAddress}
-                >
+              >
                 {order.id}
                 {console.log(order)}
               </OrderItem>
             </li>
-  
-        ))}
-      </ul>
-
-      <div className="pagination_buttons">
-        <button onClick={goBack} className="btn-prev">
-          <img src={iconPrev} alt="" />
-        </button>
-        <span>
-          {currentPage + 1}-{pages}
-        </span>
-        <button onClick={passPage} className="btn_next">
-          <img src={iconNext} alt="" />
-        </button>
+          ))}
+        </ul>
+        <div className="pagination_buttons">
+          <button onClick={goBack} className="page-btn">
+            <BsArrowLeftCircle className={currentPage === 0 ? "arrow-icon-inactive" : "arrow-icon-active"} />
+          </button>
+          <span className="page-span">
+            {currentPage + 1} / {pages}
+          </span>
+          <button onClick={passPage} className="page-btn">
+            <BsArrowRightCircle className={currentPage === pages - 1 ? "arrow-icon-inactive" : "arrow-icon-active"} />
+          </button>
+        </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

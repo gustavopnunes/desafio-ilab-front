@@ -5,7 +5,7 @@
   align-items: stretch;
   font-family: 'helvetica';
   color: rgb(128, 128, 128);
-  background-color: rgb(252, 252, 252);
+  background-color: white;
   width: 90vw;
   max-width: 450px;
   height: 640px;
@@ -37,4 +37,43 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+}
+
+.arrow-icon-active {
+  color: red;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.arrow-icon-inactive {
+  color: gray;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+}
+
+.page-btn {
+  all: unset;
+  cursor: pointer;
+}
+
+.pagination_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.page-span {
+  font-size: 25px;
+}
+
+.orders-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
