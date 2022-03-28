@@ -1,15 +1,15 @@
-import { useContext } from 'react';
-import { AuthContext } from '../providers/AuthContext';
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 function useRequests() {
-  const { token } = useContext(AuthContext) || '';
+  const { token } = useContext(AuthContext) || "";
 
   async function get(route, status, items) {
     try {
       const response = await fetch(
         `https://desafio-ilab-back.herokuapp.com/${route}?status=${status}&items=${items}`,
         {
-          method: 'GET',
+          method: "GET",
         }
       );
 
@@ -20,7 +20,7 @@ function useRequests() {
       }
       return data;
     } catch (error) {
-      console.log(error.message); //enquanto ainda nao temos tratamento de erro
+      console.log(error.message);
     }
   }
 
@@ -29,7 +29,7 @@ function useRequests() {
       const response = await fetch(
         `https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
         {
-          method: 'GET',
+          method: "GET",
         }
       );
 
@@ -55,9 +55,9 @@ function useRequests() {
       const response = await fetch(
         `https://desafio-ilab-back.herokuapp.com/${route}`,
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             ...config,
           },
           body: JSON.stringify(body),
@@ -80,10 +80,10 @@ function useRequests() {
       const response = await fetch(
         `https://thawing-brushlands-07564.herokuapp.com/https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
         {
-          method: 'PUT',
+          method: "PUT",
           body: JSON.stringify(body),
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }

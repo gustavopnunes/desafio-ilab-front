@@ -4,6 +4,7 @@ import useRequests from "../hooks/useRequests";
 import jwtDecode from "jwt-decode";
 
 export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -12,9 +13,7 @@ export const AuthProvider = ({ children }) => {
   
   useEffect(() => {
     if (localStorage.getItem("@iLab/token")) {
-      setIsAuthenticated(true);
-      // console.log(dpId)
-      
+      setIsAuthenticated(true);      
     }
     //eslint-disable-next-line
   }, []);
@@ -25,9 +24,6 @@ export const AuthProvider = ({ children }) => {
       phone: loginData.login,
       password: loginData.password,
     };
-
-
-    console.log()
 
     const failToast = () => toast.error("Login inválido! Tente novamente");
 
@@ -48,8 +44,6 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-
-  
   const logout = () => {
     localStorage.removeItem("@iLab/token");
     setIsAuthenticated(false);

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./providers/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext";
 import { TrackingProvider } from "./contexts/TrackingContext";
 import { Toaster } from "react-hot-toast";
 
@@ -18,7 +18,8 @@ ReactDOM.render(
               style: {
                 background: "#EA1D2C",
                 fontFamily: "Helvetica",
-                color: "blanchedalmond"
+                color: "blanchedalmond",
+                fontSize: "2rem"
               }
             }
           }}/>

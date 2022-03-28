@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./styles.css";
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
@@ -7,7 +6,6 @@ import useTracking from "../../hooks/useTracking";
 function StopTrackingButton({ newStatus, buttonText}) {
   const { watchID, trackingID } = useTracking();
   const { put } = useRequests();
-  // const trID = String(trackingID);
 
   async function updateTrackingStatus() {
     const body = {

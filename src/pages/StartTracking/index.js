@@ -3,10 +3,7 @@ import Header from "../../components/Header";
 import StartTrackingButton from "../../components/StartTrackingButton";
 import useTracking from "../../hooks/useTracking";
 
-import "./styles.css";
-
 function StartTracking() {
-
   const { orderID } = useTracking();
 
   return (

@@ -1,5 +1,4 @@
 import LoginForm from "../../components/LoginForm";
-
 import { Container } from "./styles";
 
 function Login() {
@@ -11,6 +10,3 @@ function Login() {
 }
 
 export default Login;
-
-// tá logado? >> renderiza tela de pedidos
-// não tá logado? >> renderiza tela de login
