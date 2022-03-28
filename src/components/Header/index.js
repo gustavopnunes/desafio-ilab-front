@@ -1,11 +1,18 @@
-import './styles.css';
+import "./style.css";
+import logoutImg from "./assets/logout-512.png";
+import helmet from "./assets/capacete.png";
+import { useAuth } from "../../providers/AuthContext";
 
-function Header(props) {
+
+function Header({children}) {
+
+    const { logout } = useAuth();
+
     return (
-        <div className='orderList__top'>
-            <h1 className='orderList__h1'>
-                {props.children}
-            </h1>
+        <div className="header__container">
+            <img src={helmet} className="helmet_img" alt="capacete"></img>
+            <span className="header_span">{children}</span>
+            <img src={logoutImg} className="logout_img" alt="botao sair" onClick={() => logout()}></img>
         </div>
     );
 }

@@ -1,14 +1,21 @@
 import React from 'react';
+import Header from '../../components/Header';
 import StopTrackingButton from "../../components/StopTrackingButton";
-
-import { Container } from './styles';
+import useTracking from "../../hooks/useTracking";
 
 function FinishTracking() {
+
+  const { orderID } = useTracking();
+
   return (
-    <Container>
-      <StopTrackingButton buttonText={"Concluir"} newStatus={"DELIVERED"} />
-      <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />
-    </Container>
+    <div className="start-container">
+      <Header>Pedido #{orderID}</Header>
+      <div className="page-container">
+          <StopTrackingButton buttonText={"Concluir"} newStatus={"DELIVERED"} />
+          <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />
+      </div>
+    </div>
+
   );
 }
 
