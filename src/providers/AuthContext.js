@@ -9,16 +9,16 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [dpId, setDpId] = useState()
   const useRequest = useRequests();
-  
+
   useEffect(() => {
     if (localStorage.getItem("@iLab/token")) {
       setIsAuthenticated(true);
-      // console.log(dpId)
-      
+      setToken(localStorage.getItem("@iLab/token"));
+
     }
     //eslint-disable-next-line
   }, []);
-  
+
   const validateLogin = (loginData) => {
     const formatedLoginData = {
       email: loginData.login,
@@ -36,12 +36,12 @@ export const AuthProvider = ({ children }) => {
       if (!result) {
         failToast();
       }
-      
+
       else {
         const formatedToken = result.token.replace("Bearer ", "");
         localStorage.setItem("@iLab/token", formatedToken);
         setToken(formatedToken);
-        const {userId} = jwtDecode(formatedToken)
+        const { userId } = jwtDecode(formatedToken)
         setDpId(userId)
         window.location.replace("/orders");
       }
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
   };
 
 
-  
+
   const logout = () => {
     localStorage.removeItem("@iLab/token");
     setIsAuthenticated(false);
