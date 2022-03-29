@@ -9,6 +9,7 @@ import "./style.css";
 function OrdersList() {
   const requests = useRequests();
   const { setOrderID } = useTracking();
+  const navigate = useNavigate();
 
   const [orders, setOrders] = useState([]);
   const [itensPerPage] = useState(10);
@@ -18,8 +19,6 @@ function OrdersList() {
   const starIndex = currentPage * itensPerPage;
   const endIndex = starIndex + itensPerPage;
   const currentOrders = orders.slice(starIndex, endIndex);
-  const navigate = useNavigate();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,13 +32,14 @@ function OrdersList() {
   const goBack = () => {
     if (currentPage === 0) {
       return;
-    }
+    };
     setCurrentPage(currentPage - 1);
   };
+
   const passPage = () => {
     if (currentPage === pages - 1) {
       return;
-    }
+    };
     setCurrentPage(currentPage + 1);
   };
 
@@ -47,10 +47,13 @@ function OrdersList() {
     <div className="ordersList__container">
       <ul>
         {currentOrders.map((order) => (
-          <li className="ordersList__li" key={order.id} onClick={() => {
-            navigate('/start-tracking', { state: { id: order.id } });
-            setOrderID(order.id);
-          }}>
+          <li
+            className="ordersList__li"
+            key={order.id}
+            onClick={() => {
+              navigate('/start-tracking');
+              setOrderID(order.id);
+            }}>
             <OrderItem
               clientName={order.clientId.clientName}
               address={order.clientId.clientAddress}
@@ -62,13 +65,19 @@ function OrdersList() {
 
       </ul>
       <div className="pagination_buttons">
-        <button onClick={goBack} className="page-btn">
+        <button
+          onClick={goBack}
+          className="page-btn"
+        >
           <BsArrowLeftCircle className={currentPage === 0 ? "arrow-icon-inactive" : "arrow-icon-active"} />
         </button>
         <span className="page-span">
           {currentPage + 1} / {pages}
         </span>
-        <button onClick={passPage} className="page-btn">
+        <button
+          onClick={passPage}
+          className="page-btn"
+        >
           <BsArrowRightCircle className={currentPage === pages - 1 ? "arrow-icon-inactive" : "arrow-icon-active"} />
         </button>
       </div>

@@ -15,8 +15,7 @@ function FinishTracking() {
           <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />
       </div>
     </div>
-
   );
-}
+};
 
 export default FinishTracking;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Form } from "./styles";
 import { useAuth } from "../../providers/AuthContext";
+import { Form } from "./styles";
 
 function LoginForm() {
   const { validateLogin } = useAuth();
@@ -8,6 +8,10 @@ function LoginForm() {
     login: "",
     password: "",
   });
+
+  const validateWithData = () => {
+    validateLogin(loginData);
+  };
 
   return (
     <Form onSubmit={e => e.preventDefault()}>
@@ -29,7 +33,9 @@ function LoginForm() {
           }
           placeholder="Informe sua senha"
         />
-        <button onClick={() => validateLogin(loginData)}>Continuar</button>
+        <button onClick={validateWithData}>
+          Continuar
+        </button>
     </Form>
   );
 }

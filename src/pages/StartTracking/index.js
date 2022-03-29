@@ -17,6 +17,6 @@ function StartTracking() {
       </div>
     </div>
   );
-}
+};
 
 export default StartTracking;

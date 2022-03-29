@@ -5,9 +5,6 @@ function useTrackingProvider() {
   const [trackingID, setTrackingID] = useState();
   const [permission, setPermission] = useState(false);
   const [orderID, setOrderID] = useState();
-  // let watchID = "x";
-  // let trackingID = "y";
- 
   
   return {
     watchID,
