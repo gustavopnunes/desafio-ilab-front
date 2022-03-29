@@ -1,11 +1,9 @@
 .stopBtn {
-  /* all: unset; */
   width: 320px;
   height: 60px;
   border-radius: 10px;
   font-size: 1.9rem;
   padding: 5px 3px;
-  /* margin-bottom: 10px; */
   gap: 1rem;
 }
 
@@ -21,6 +19,7 @@
 .delivered-theme {
   background-color: #ea1d2c;
   color: white;
+  margin-bottom: 1rem;
 }
 
 .delivered-theme:hover {

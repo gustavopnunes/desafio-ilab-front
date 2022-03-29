@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "./styles";
-import { useAuth } from "../../providers/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 function LoginForm() {
   const { validateLogin } = useAuth();
@@ -10,7 +10,7 @@ function LoginForm() {
   });
 
   return (
-    <Form onSubmit={e => e.preventDefault()}>
+    <Form onSubmit={e => e.preventDefault()} autoComplete="on">
       <header>
         <h1>ENTRAR COM E-MAIL OU TELEFONE</h1>
       </header>

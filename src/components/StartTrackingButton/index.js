@@ -15,7 +15,6 @@ function StartTrackingButton() {
 
 const location = useLocation()
   const token = localStorage.getItem("@iLab/token");
-  // console.log(dpId)
 
   async function createTrackingStatus() {
     const body1 = {
@@ -24,10 +23,6 @@ const location = useLocation()
       status: "DELIVERED"
     };
 
-    // console.log(jwtDecode(token).userId)
-    console.log(body1)
-
-    // console.log(token);
     await post("tracking-status", body1, token).then(res => {
       if (res)
       trackID = String(res.id);
@@ -79,13 +74,11 @@ const location = useLocation()
     } else {
       setPermission(false);
       console.log("Not Available");
-      // alerta?
     }
   }
 
   return (
     <NavLink name="start-tracking" to="/finish-tracking">
-      {/* {console.log(location.state.id)} */}
       <button
         className="startBtn"
         onClick={() => {

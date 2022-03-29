@@ -1,70 +1,243 @@
-# Getting Started with Create React App
+# DESAFIO DO LOVE <3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+### Repositório front
 
-In the project directory, you can run:
+https://github.com/gustavopnunes/desafio-ilab-front
 
-### `npm start`
+### Repositório back
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://github.com/gustavopnunes/desafio-ilab-back
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Login do entregador
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### POST /login
 
-### `npm run build`
+**Campos necessários:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Login (email ou telefone) (obrigatório)
+- Password (obrigatório)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Retorno:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Status
+  - 200
+  - 401
+- Token
 
-### `npm run eject`
+```
+//Exemplo de requisição:
+{
+    "email": "pedro@email.com", || "phone": "719999999",
+    "password": "12345"
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Tratamento de erros:**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Token inválido
+- Email e/ou senha inválidos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Alterar status do pedido e atribui pedido ao entregador
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### POST /orders/:id_order/tracking-status
 
-## Learn More
+Altera o status do pedido(em andamento) atribui o pedido ao entregador através da criacao do rastreio(tracking-status), que já é iniciado em andamento.
+Dessa forma a gente evita que o pedido fique no limbo entre seleção e inicio de tracking
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Quando é chamado?**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- ao selecionar pedido (em andamento)
+- ao cancelar pedido (aberto)
+- ao finalizar pedido (concluido)
 
-### Code Splitting
+**Campos necessários:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Header:
+  - Token
+- Path Param
+  - order_id
+- Body:
+  - delivery_person_id
 
-### Analyzing the Bundle Size
+```
+// Exemplo de requisição
+{
+    "idEntregador": id_entregador
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Retorno:**
 
-### Making a Progressive Web App
+- Status
+  - 201
+  - 400
+- Body:
+  - Objeto criado
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## Consulta de pedidos abertos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### GET /orders?status=open&items=15
 
-### Deployment
+// Criar paginação (interface JPA Repository em vez de CrudRepository)
+// O parâmetro "items" define quantos itens serão retornados
+// Possibilidades de status: “aberto”, “em andamento”, “entregue”
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Campos necessários:**
 
-### `npm run build` fails to minify
+- Header
+  - Token
+- Query Param
+  - status
+  - page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Retorno:**
+
+- Status
+  - 200 (sucesso)
+  - 400
+- Lista de Pedidos
+
+```
+//Exemplo de retorno:
+
+{
+    "": "",
+    "": ""
+}
+```
+
+**Tratamento de erros:**
+
+- Pedido com status diferente de "aberto"
+
+---
+
+## Receber geolocalização do entregador
+
+### POST /tracking-history
+
+**Quando é chamado?**
+
+- ao clicar “iniciar tracking”
+- de X em X segundos
+
+**Campos necessários:**
+
+- Header:
+  - Token
+- Body:
+  - tracking_date
+  - latitude,
+  - longitude
+  - tracking_status_id
+
+```
+// Exemplo de requisição
+{
+    "order_id": id;
+    "delivery_person_id": id_entregador;
+    "tracking_date": 1647969882259;
+    "latitude": "23323455";
+    "longitude": 23323180
+}
+```
+
+**Retorno:**
+
+- Status de sucesso:
+
+  - 201 (created)
+
+- Status de erro:
+  - 400 (bad request)
+
+---
+
+## Alteração de status de rastreio
+
+### PUT /tracking-status/:id
+
+Sendo que ao finalizar tracking passando o status "concluido" o status do pedido tambem devera ser alterado
+
+**Quando é chamado?**
+
+- ao clicar cancelar pedido (cancelado)
+- ao clicar finalizar pedido (concluido)
+
+**Campos necessários:**
+
+- Header:
+  - Token
+- PathParam
+  - id_tracking_status
+- Body:
+  - novo status
+
+```
+//Exemplo de requisição:
+
+{
+    "status": "cancelado";
+}
+```
+
+**Retorno:**
+
+- Status
+  - 200 (sucess)
+  - 400 (bad request)
+  - 401 (unauthorized)
+- Body:
+  - Objeto editado
+
+**Tratamento de erros:**
+
+-
+
+---
+
+## Endpoint para consultas de geolocalização por pedido
+
+~~### GET /tracking-history?order-id=id~~
+
+### GET /tracking-history/orders/id
+
+??? Será feito com join ???
+
+**Campos necessários:**
+
+- Header:
+  - Token
+- PathParam
+  - idOrder?
+
+**Retorno:**
+
+- Histórico de localização
+- Status
+  - 204
+  - 400
+  - 404
+
+**Tratamento de erros:**
+
+## Padrão de organização dos pacotes
+
+#### Pacote base:
+
+    * [br.com.grupodois.desafioilab] -> pb
+
+    * pb.model
+    * pb.controller
+    * pb.services
+    * pb.dao
+
+post: orders/:idOrder/tracking
+
+Endpoint q atribui pedido ao entregador, cria o rastreio e altera o status do pedido
