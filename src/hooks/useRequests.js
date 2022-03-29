@@ -6,10 +6,15 @@ function useRequests() {
 
   async function get(route, status, items) {
     try {
+      console.log(token);
       const response = await fetch(
         `https://desafio-ilab-back.herokuapp.com/${route}?status=${status}&items=${items}`,
         {
           method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
@@ -48,8 +53,8 @@ function useRequests() {
   async function post(route, body, withToken) {
     const config = withToken
       ? {
-          Authorization: `Bearer ${token}`,
-        }
+        Authorization: `Bearer ${token}`,
+      }
       : {};
     try {
       const response = await fetch(
