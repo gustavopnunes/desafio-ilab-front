@@ -1,5 +1,5 @@
-import './style.css';
 import motoIcon from './assets/moto-icon.png';
+import './style.css';
 
 function OrderItem({ clientName, children, address }) {
   return (
@@ -8,7 +8,7 @@ function OrderItem({ clientName, children, address }) {
         <p className='client_name'>Cliente: {clientName}</p>
         <p className='client_address'>{address}</p>
       </div>
-      <span className='pedido_id'>##{children}</span>
+      <span className='pedido_id'>#{children}</span>
       <img className='moto_icon' src={motoIcon} alt='' />
     </div>
   );
