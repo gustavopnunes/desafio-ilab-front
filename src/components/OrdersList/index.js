@@ -23,7 +23,7 @@ function OrdersList() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const ordersList = await requests.get("orders", "OPENED", "100");
+      const ordersList = await requests.get("orders", "OPEN", "100");
       setOrders(ordersList.sort((a, b) => a.id - b.id));
     };
     fetchData();
