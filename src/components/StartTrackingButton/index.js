@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink, useLocation } from 'react-router-dom';
 
-import { Button } from "./styles";
+import "./styles.css";
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
+import jwtDecode from "jwt-decode";
 
 function StartTrackingButton() {
   const { setTrackingID, setWatchID } = useTracking();
@@ -11,17 +12,23 @@ function StartTrackingButton() {
   const { post } = useRequests();
   let trackID = "";
 
+
+const location = useLocation()
   const token = localStorage.getItem("@iLab/token");
+  // console.log(dpId)
 
   async function createTrackingStatus() {
     const body1 = {
-      order: { "id": 36 },
-      dpId: { "id": 3 },
+      order: { "id": location.state.id },
+      dpId: { "id": jwtDecode(token).userId },
       status: "DELIVERED"
     };
 
-    console.log(token);
-    const response = await post("tracking-status", body1, token).then(res => {
+    // console.log(jwtDecode(token).userId)
+    console.log(body1)
+
+    // console.log(token);
+    await post("tracking-status", body1, token).then(res => {
       if (res)
       trackID = String(res.id);
       setTrackingID(res.id);
@@ -30,7 +37,8 @@ function StartTrackingButton() {
   }
 
   async function createTrackingRecord(body) {
-    const response = await post("tracking-history", body, token).then(res => {
+ 
+    await post("tracking-history", body, token).then(res => {
       if (res)
         console.log("post TH: ", res);
     });
@@ -77,14 +85,16 @@ function StartTrackingButton() {
 
   return (
     <NavLink name="start-tracking" to="/finish-tracking">
-      <Button
+      {/* {console.log(location.state.id)} */}
+      <button
+        className="startBtn"
         onClick={() => {
           createTrackingStatus();
           getLocationUpdate();
         }}
       >
         Iniciar Tracking
-      </Button>
+      </button>
     </NavLink>
   );
 }

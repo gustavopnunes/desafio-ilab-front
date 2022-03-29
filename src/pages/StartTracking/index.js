@@ -1,13 +1,21 @@
 import React from "react";
+import Header from "../../components/Header";
 import StartTrackingButton from "../../components/StartTrackingButton";
+import useTracking from "../../hooks/useTracking";
 
-import { Container } from "./styles";
+import "./styles.css";
 
 function StartTracking() {
+
+  const { orderID } = useTracking();
+
   return (
-    <Container>
-      <StartTrackingButton />
-    </Container>
+    <div className="start-container">
+      <Header>Pedido #{orderID}</Header>
+      <div className="page-container">
+        <StartTrackingButton />
+      </div>
+    </div>
   );
 }
 

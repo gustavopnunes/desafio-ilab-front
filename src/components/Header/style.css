@@ -1,0 +1,33 @@
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ea1d2c;
+    min-width: 100vw;
+    min-height: 100px;
+    padding: 20px;
+    padding-top: 30px;
+    margin-bottom: 20px;
+}
+
+.logout_img{
+    width: 25px;
+    cursor: pointer;
+}
+
+.helmet_img {
+    width: 60px;
+}
+
+.header_span {
+    font-family: "helvetica";
+    color: white;
+    font-size: 3.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login_header {
+    justify-content: flex-start;
+    gap: 10px;
+}
