@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }) => {
       password: loginData.password,
     };
 
-
     console.log()
 
     const failToast = () => toast.error("Login inválido! Tente novamente");
@@ -47,8 +46,6 @@ export const AuthProvider = ({ children }) => {
       }
     });
   };
-
-
 
   const logout = () => {
     localStorage.removeItem("@iLab/token");

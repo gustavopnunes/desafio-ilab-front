@@ -4,7 +4,7 @@ import { AuthContext } from '../providers/AuthContext';
 function useRequests() {
   const { token } = useContext(AuthContext) || '';
 
-  async function get(route, status, items) {
+  const get = async (route, status, items) => {
     try {
       console.log(token);
       const response = await fetch(
@@ -22,14 +22,14 @@ function useRequests() {
 
       if (!response.ok) {
         throw new Error(data);
-      }
+      };
       return data;
     } catch (error) {
       console.log(error.message); //enquanto ainda nao temos tratamento de erro
-    }
-  }
+    };
+  };
 
-  async function getOne(route, id) {
+  const getOne = async (route, id) => {
     try {
       const response = await fetch(
         `https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
@@ -42,15 +42,15 @@ function useRequests() {
 
       if (!response.ok) {
         throw new Error(data);
-      }
+      };
 
       return data;
     } catch (error) {
       console.log(error.message);
-    }
-  }
+    };
+  };
 
-  async function post(route, body, withToken) {
+  const post = async (route, body, withToken) => {
     const config = withToken
       ? {
         Authorization: `Bearer ${token}`,
@@ -73,14 +73,14 @@ function useRequests() {
 
       if (!response.ok) {
         throw new Error(data);
-      }
+      };
       return data;
     } catch (error) {
       console.log(error.message);
-    }
-  }
+    };
+  };
 
-  async function put(route, body, id) {
+  const put = async (route, body, id) => {
     try {
       const response = await fetch(
         `https://thawing-brushlands-07564.herokuapp.com/https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
@@ -98,13 +98,13 @@ function useRequests() {
 
       if (!response.ok) {
         throw new Error(data);
-      }
+      };
 
       return data;
     } catch (error) {
       console.log(error.message);
-    }
-  }
+    };
+  };
 
   return {
     get,

@@ -41,5 +41,6 @@ export const Form = styled.form`
     max-width: 360px;
     border-radius: 5px;
     font-size: 1.6rem;
+    text-decoration: none;
   }
 `;
