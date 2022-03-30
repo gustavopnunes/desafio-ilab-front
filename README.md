@@ -29,13 +29,13 @@ Tecnologias que utilizamos para desenvolver esta API Rest:
 
 - A [API](https://github.com/gustavopnunes/desafio-ilab-back) do projeto deve estar em execução.
 
-**Clone o projeto e acesse a pasta**
+**Clone o projeto e acesse a pasta:**
 
 ```bash
 $ git clone https://github.com/gustavopnunes/desafio-ilab-front && cd desafio-ilab-front
 ```
 
-**Siga as etapas abaixo**
+**Siga as etapas abaixo:**
 
 ```bash
 # Instale as dependências
@@ -78,7 +78,9 @@ Ao clicar em "Iniciar Rastreio", um novo rastreio será lançado no sistema, ass
 <p align="center">
 <img src="https://i.imgur.com/ohUzjgI.png" title="tela de pedidos" width="400" />
 </p>
-Após selecionar um pedido, o usuário deverá confirmar sua escolha clicando em "Iniciar Rastreio". Ao fazer isso, um novo rastreio será lançado no sistema, associando a pessoa entregadora ao pedido escolhido. Além disso, o status do pedido será redefinido como "in progress".
+Nesta página, o usuário tem duas opções:
+- cancelar a entrega, de modo que o pedido retornará à lista de pedidos abertos - ou seja, terá seu status alterado para "open", enquanto que o status daquele rastreio em específico será definido como "canceled";
+- concluir a entrega, de modo que o pedido e o rastreio terão seu status alterado para "delivered".
 
 ## 🔗 Links adicionais
 - [Kanban da equipe](https://sharing.clickup.com/31041916/b/h/xkabw-103/afe7965c2387ca4)
