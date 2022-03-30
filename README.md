@@ -22,6 +22,7 @@ Tecnologias que utilizamos para desenvolver esta API Rest:
 
 - [ReactJS](https://reactjs.org/)
 - [React Router DOM](https://reacttraining.com/react-router/)
+- [Geolocation API](https://w3c.github.io/geolocation-api/#geolocation_interface)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Styled Components](https://styled-components.com/)
 
