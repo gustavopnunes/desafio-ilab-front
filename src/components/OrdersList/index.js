@@ -56,7 +56,6 @@ function OrdersList() {
             }}>
             <OrderItem
               clientName={order.clientId.clientName}
-              address={order.clientId.clientAddress}
             >
               {order.id}
             </OrderItem>

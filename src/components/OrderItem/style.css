@@ -21,16 +21,16 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.client_address {
+.client_order {
   font-size: 22px;
   color: rgb(109, 99, 99);
   font-weight: 700;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 .moto_icon {
   position: absolute;
   height: 60px;
   width: 60px;
   right: 15px;
-  bottom: 0px;
+  bottom: 12px;
 }
