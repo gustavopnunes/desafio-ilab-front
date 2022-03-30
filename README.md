@@ -67,9 +67,16 @@ Nesta tela inicial, a pessoa entregadora deve fazer login com seu e-mail ou tele
 </p>
 Após o login, o usuário será redirecionado para a tela acima, na qual são listados todos os pedidos abertos - isto é, que ainda não estão associados a um entregador. Ao selecionar um pedido clicando nele, o usuário será redirecionado para a tela seguinte.
 
-### 📦 Início do Rastreio
+### Início do Rastreio
 <p align="center">
 <img src="https://i.imgur.com/er4mBAm.png" title="tela de pedidos" width="400" />
+</p>
+Após selecionar um pedido, o usuário pode confirmar sua escolha clicando em "Iniciar Rastreio" ou, caso tenha se arrependido do pedido escolhido, clicar em "Voltar" para retornar à tela anterior. 
+Ao clicar em "Iniciar Rastreio", um novo rastreio será lançado no sistema, associando a pessoa entregadora ao pedido escolhido. Além disso, o status do pedido será redefinido como "in progress" e, a cada mudança de posição da pessoa entregadora, sua localização será armazenada no banco de dados.
+
+### Conclusão ou Cancelamento do Rastreio
+<p align="center">
+<img src="https://i.imgur.com/ohUzjgI.png" title="tela de pedidos" width="400" />
 </p>
 Após selecionar um pedido, o usuário deverá confirmar sua escolha clicando em "Iniciar Rastreio". Ao fazer isso, um novo rastreio será lançado no sistema, associando a pessoa entregadora ao pedido escolhido. Além disso, o status do pedido será redefinido como "in progress".
 
