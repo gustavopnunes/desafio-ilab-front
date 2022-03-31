@@ -15,8 +15,8 @@ function StartTrackingButton() {
 
   const createTrackingStatus = async () => {
     const body = {
-      order: { "id": orderID },
-      dpId: { "id": jwtDecode(token).userId },
+      orderId: orderID,
+      dpId: jwtDecode(token).userId,
       status: "DELIVERED"
     };
 
