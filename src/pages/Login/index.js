@@ -1,16 +1,15 @@
+import Header from "../../components/Header";
 import LoginForm from "../../components/LoginForm";
-
-import { Container } from "./styles";
 
 function Login() {
   return (
-    <Container>
-      <LoginForm />
-    </Container>
+    <div className="loginPage-container">
+      <Header>EntregaLovers App</Header>
+      <div className="login-container">
+        <LoginForm />
+      </div>
+    </div>
   );
-}
+};
 
 export default Login;
-
-// tá logado? >> renderiza tela de pedidos
-// não tá logado? >> renderiza tela de login

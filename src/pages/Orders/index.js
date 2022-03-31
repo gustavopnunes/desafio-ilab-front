@@ -1,14 +1,17 @@
-import React from "react";
-import OrdersList from "../../components/OrdersList";
+import Header from '../../components/Header';
+import OrdersList from '../../components/OrdersList';
 
-import "./styles.css";
+import './styles.css';
 
 function Orders() {
   return (
-    <>
-      <OrdersList />
-    </>
+    <div className="start-container">
+      <Header>Pedidos abertos</Header>
+      <div className="page-container">
+        <OrdersList />
+      </div>
+    </div>
   );
-}
+};
 
 export default Orders;

@@ -1,0 +1,9 @@
+.start_button {
+    all: unset;
+    text-decoration: none;
+    font-family: 'Helvetica';
+    color: gray;
+    font-size: 1.9rem;
+    margin-top: 10px;
+    cursor: pointer;
+}

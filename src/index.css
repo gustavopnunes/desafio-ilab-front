@@ -5,28 +5,65 @@
 }
 
 html {
-  font-size: 65.2%;
+  font-size: 62.5%;
   scroll-behavior: smooth;
-  height: 100%;
-  width: 100%;
 }
 
 body {
-  height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 button {
   cursor: pointer;
   border: none;
+  margin: 0.5rem;
+  text-decoration: none;
 }
 
-button:hover {
-  filter: brightness(120%);
-  transition: 0.2s ease infinite;
+.start-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+
+  background-image: url("./components/Header/assets/background1.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.loginPage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 1rem;
 }

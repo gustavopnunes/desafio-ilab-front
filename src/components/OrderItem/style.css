@@ -1,17 +1,36 @@
-.orderItem__container {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 0px 15px 0px 15px;
-    height: 68px;
-    width: 100%;
-    background-color: hsla(210, 14%, 83%, 0.323);
-    margin-bottom: 15px;
-    cursor: pointer;
-    border-radius: 10px;
+.orderItem_container {
+  display: flex;
+  padding: 5px 15px 0px 15px;
+  gap: 10px;
+  max-height: 90px;
+  max-width: 500px;
+  background-color: rgb(252, 252, 252);
+  margin-bottom: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 0.01px 11px rgba(213, 213, 213, 0.524);
 }
-
-.orderItem__title {
-    font-size: 2.6rem;
-    background-color: hsla(210, 14%, 83%, 0);
+.pedido_id {
+  position: absolute;
+  font-size: 16px;
+  right: 15px;
+}
+.client_name {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.client_order {
+  font-size: 22px;
+  color: rgb(109, 99, 99);
+  font-weight: 700;
+  padding-bottom: 15px;
+}
+.moto_icon {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  right: 15px;
+  bottom: 12px;
 }

@@ -1,17 +1,7 @@
-import { useState } from "react";
-import Login from "./pages/Login";
-import Orders from "./pages/Orders";
+import Routes from './routes';
 
 function App() {
-
-  const [isLoggedIn] = useState(true)
-
-  return (
-
-    <div className="App">
-    {isLoggedIn? <Orders /> : <Login />}
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;
