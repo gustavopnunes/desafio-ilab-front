@@ -7,8 +7,5 @@ export const Container = styled.div`
     text-align: center;
     font-family: "helvetica";
     color: gray;
-    // width: 90vw;
-    // max-width: 600px;
-    // height: 240px;
     align-items: center;
 `;

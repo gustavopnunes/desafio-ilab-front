@@ -1,6 +1,6 @@
-import { useAuth } from "../../providers/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import helmet from "./assets/capacete.png";
-import logoutImg from "./assets/logout-512.png";
+import logoutImg from "./assets/logout.png";
 import "./style.css";
 
 function Header({ children }) {

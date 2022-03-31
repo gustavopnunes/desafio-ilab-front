@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AuthContext } from '../providers/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 function useRequests() {
   const { token } = useContext(AuthContext) || '';
@@ -25,7 +25,7 @@ function useRequests() {
       };
       return data;
     } catch (error) {
-      console.log(error.message); //enquanto ainda nao temos tratamento de erro
+      console.log(error.message); 
     };
   };
 
@@ -83,7 +83,7 @@ function useRequests() {
   const put = async (route, body, id) => {
     try {
       const response = await fetch(
-        `https://thawing-brushlands-07564.herokuapp.com/https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
+        `https://desafio-ilab-back.herokuapp.com/${route}/${id}`,
         {
           method: 'PUT',
           body: JSON.stringify(body),
