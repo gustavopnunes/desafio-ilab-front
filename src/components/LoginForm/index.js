@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth } from "../../providers/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import { Form } from "./styles";
 
 function LoginForm() {

@@ -7,7 +7,7 @@ import FinishTracking from "../pages/FinishTracking";
 import Login from "../pages/Login";
 import Orders from "../pages/Orders";
 import StartTracking from "../pages/StartTracking";
-import { useAuth } from "../providers/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const Routes = () => {
   const { isAuthenticated } = useAuth();

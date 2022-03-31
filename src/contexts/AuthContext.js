@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
     if (localStorage.getItem("@iLab/token")) {
       setIsAuthenticated(true);
       setToken(localStorage.getItem("@iLab/token"));
-
     }
     //eslint-disable-next-line
   }, []);
