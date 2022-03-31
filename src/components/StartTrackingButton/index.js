@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
 import "./styles.css";
+import toast from "react-hot-toast";
 
 function StartTrackingButton() {
   const { setTrackingID, setWatchID, orderID } = useTracking();
@@ -13,7 +14,9 @@ function StartTrackingButton() {
 
   const token = localStorage.getItem("@iLab/token");
 
-  const createTrackingStatus = async () => {
+  const failToast = (text) => toast.error(text);
+
+  const startTracking = async () => {
     const body = {
       orderId: orderID,
       dpId: jwtDecode(token).userId,
@@ -25,6 +28,10 @@ function StartTrackingButton() {
         trackID = String(res.id);
         setTrackingID(res.id);
         console.log("post TS: ", res);
+        createTrackingRecord();
+        getLocationUpdate();
+      } else if (!res) {
+        failToast("Ops! Este pedido não está mais disponível...");
       };
     });
   };
@@ -70,14 +77,8 @@ function StartTrackingButton() {
 
     } else {
       setPermission(false);
-      console.log("Not Available");
-      // alerta?
+      failToast("Habilite o acesso à localização.");
     };
-  };
-
-  const startTracking = () => {
-    createTrackingStatus();
-    getLocationUpdate();
   };
 
   return (
