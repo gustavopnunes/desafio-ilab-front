@@ -4,9 +4,10 @@
 
 ## Sobre o projeto
 
-<p style="color: red;">Nossa aplicação...</p>
+<p>Nosso projeto consiste em uma aplicação para recuperação e armazenamento de dados de geolocalização em tempo real.</p>
 
 + Para ver a **API**, desenvolvida com Spring Boot, clique [aqui](https://github.com/gustavopnunes/desafio-ilab-back).</br>
++ Para ver o projeto no Vercel, clique [aqui]().
 
 ### 👩🏽‍💻 Equipe responsável
 - [Bianca Andrade](https://github.com/biancaandradee)
