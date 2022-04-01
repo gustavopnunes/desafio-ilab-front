@@ -4,7 +4,7 @@ import LoginForm from "../../components/LoginForm";
 function Login() {
   return (
     <div className="loginPage-container">
-      <Header>EntregaLovers App</Header>
+      <Header isLoginPage>EntregaLovers App</Header>
       <div className="login-container">
         <LoginForm />
       </div>

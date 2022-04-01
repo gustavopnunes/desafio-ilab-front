@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Form = styled.form`
 
   h1 {
-    font-size: 1.2rem;
+    font-size: 1.9rem;
     color: black;
   }
 
@@ -40,7 +40,7 @@ export const Form = styled.form`
     width: 90%;
     max-width: 360px;
     border-radius: 5px;
-    font-size: 1.6rem;
     text-decoration: none;
+    text-transform: uppercase;
   }
 `;

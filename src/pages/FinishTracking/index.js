@@ -10,6 +10,7 @@ function FinishTracking() {
   return (
     <div className="start-container">
       <Header>Pedido #{orderID}</Header>
+      <h2>Sua rota está sendo rastreada!</h2>
       <div className="page-container">
           <StopTrackingButton buttonText={"Concluir"} newStatus={"DELIVERED"} />
           <StopTrackingButton buttonText={"Cancelar"} newStatus={"CANCELED"} />

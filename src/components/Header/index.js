@@ -3,7 +3,7 @@ import helmet from "./assets/capacete.png";
 import logoutImg from "./assets/logout.png";
 import "./style.css";
 
-function Header({ children }) {
+function Header({ children, isLoginPage=false }) {
 
     const { logout } = useAuth();
 
@@ -17,9 +17,11 @@ function Header({ children }) {
             <span className="header_span">
                 {children}
             </span>
-
+        
             {children !== "EntregaLover" && (
                 <img
+                    style={isLoginPage? {opacity: 0} : {opacity:1
+                    }}
                     src={logoutImg}
                     className="logout_img"
                     alt="botao sair"

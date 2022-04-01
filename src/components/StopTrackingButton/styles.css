@@ -10,6 +10,8 @@
 .canceled-theme {
   background-color: rgb(235, 235, 235);
   color: black;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .canceled-theme:hover {
@@ -19,6 +21,8 @@
 .delivered-theme {
   background-color: #ea1d2c;
   color: white;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .delivered-theme:hover {
