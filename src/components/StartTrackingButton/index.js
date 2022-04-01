@@ -1,6 +1,5 @@
 import jwtDecode from "jwt-decode";
 import React from "react";
-import { NavLink } from 'react-router-dom';
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
 import "./styles.css";
@@ -30,6 +29,7 @@ function StartTrackingButton() {
         console.log("post TS: ", res);
         createTrackingRecord();
         getLocationUpdate();
+        window.locate.replace("/finish-tracking");
       } else if (!res) {
         failToast("Ops! Este pedido não está mais disponível...");
         window.locate.replace("/orders");
@@ -83,14 +83,12 @@ function StartTrackingButton() {
   };
 
   return (
-    <NavLink name="start-tracking" to="/finish-tracking">
       <button
         className="startBtn"
         onClick={startTracking}
       >
         Iniciar Tracking
       </button>
-    </NavLink>
   );
 }
 
