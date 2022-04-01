@@ -7,7 +7,7 @@
 <p>Nosso projeto consiste em uma aplicação para recuperação e armazenamento de dados de geolocalização em tempo real.</p>
 
 + Para ver a **API**, desenvolvida com Spring Boot, clique [aqui](https://github.com/gustavopnunes/desafio-ilab-back).</br>
-+ Para ver o projeto no Vercel, clique [aqui]().
++ Para ver o projeto no Vercel, clique [aqui](https://desafio-ilab-front.vercel.app/).
 
 ### 👩🏽‍💻 Equipe responsável
 - [Bianca Andrade](https://github.com/biancaandradee)
@@ -29,8 +29,6 @@ Tecnologias que utilizamos para desenvolver esta API Rest:
 
 ## 🏁 Iniciando o projeto
 
-- A [API](https://github.com/gustavopnunes/desafio-ilab-back) do projeto deve estar em execução.
-
 **Clone o projeto e acesse a pasta:**
 
 ```bash
@@ -41,10 +39,10 @@ $ git clone https://github.com/gustavopnunes/desafio-ilab-front && cd desafio-il
 
 ```bash
 # Instale as dependências
-$ yarn
+$ npm install
 
 # Inicie o client
-$ yarn start
+$ npm start
 ```
 ## ⚙️ Funcionalidades
 Funcionalidades que o sistema oferece:
