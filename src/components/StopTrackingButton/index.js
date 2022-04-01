@@ -20,6 +20,8 @@ function StopTrackingButton({ newStatus, buttonText }) {
         console.log("DR | trID: ", trackingID);
       };
     });
+
+    window.location.replace("/orders");
   };
 
   const stopWatch = () => {

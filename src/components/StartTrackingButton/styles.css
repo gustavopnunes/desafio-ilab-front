@@ -2,11 +2,12 @@
   width: 320px;
   height: 60px;
   border-radius: 10px;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   padding: 5px 3px;
   margin-bottom: 10px;
   background-color: #ea1d2c;
   color: white;
+  font-weight: 700;
 }
 
 .startBtn:hover {
