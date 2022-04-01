@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import React from "react";
+import React, { useState } from "react";
 import useRequests from "../../hooks/useRequests";
 import useTracking from "../../hooks/useTracking";
 import "./styles.css";
@@ -29,10 +29,10 @@ function StartTrackingButton() {
         console.log("post TS: ", res);
         createTrackingRecord();
         getLocationUpdate();
-        window.locate.replace("/finish-tracking");
+        window.location.replace("/finish-tracking");
       } else if (!res) {
         failToast("Ops! Este pedido não está mais disponível...");
-        window.locate.replace("/orders");
+        window.location.replace("/orders");
       };
     });
   };
