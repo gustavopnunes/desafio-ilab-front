@@ -32,6 +32,7 @@ function StartTrackingButton() {
         getLocationUpdate();
       } else if (!res) {
         failToast("Ops! Este pedido não está mais disponível...");
+        window.locate.replace("/orders");
       };
     });
   };
